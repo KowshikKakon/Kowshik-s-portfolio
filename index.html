@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kowshik Biswas — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a26;
+    --accent: #00e5c8;
+    --accent2: #7b5ea7;
+    --accent3: #f7c948;
+    --text: #e8e8f0;
+    --muted: #7777aa;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Animated bg grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,200,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,200,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 9vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.35s forwards;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--accent);
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+    font-size: 0.75em;
+    font-weight: 400;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.5s forwards;
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.65s forwards;
+  }
+
+  .contact-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .contact-pill .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* Floating data chip */
+  .hero-chip {
+    position: absolute;
+    right: -100px;
+    top: 80%;
+    transform: translate(30%, -50%);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: 200px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1s forwards;
+  }
+
+  .hero-chip .stat {
+    margin-bottom: 20px;
+  }
+
+  .hero-chip .stat:last-child { margin-bottom: 0; }
+
+  .hero-chip .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .hero-chip .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ---- DIVIDER ---- */
+  .section-divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ---- SECTIONS ---- */
+  section {
+    padding: 80px 0;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .about-text em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .about-details {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 2;
+  }
+
+  .about-details strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ---- SKILLS ---- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.2s ease;
+  }
+
+  .skill-category:hover {
+    border-color: var(--accent);
+  }
+
+  .skill-cat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent3);
+    margin-bottom: 16px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    color: var(--text);
+  }
+
+  /* ---- EXPERIENCE ---- */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .timeline-period {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .timeline-company {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ---- PROJECTS ---- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-card:hover {
+    border-color: rgba(0,229,200,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-type {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent3);
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stack-tag {
+    background: rgba(0,229,200,0.08);
+    border: 1px solid rgba(0,229,200,0.2);
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+
+  /* ---- EDUCATION ---- */
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    transition: border-color 0.2s ease;
+  }
+
+  .edu-card:hover { border-color: var(--accent2); }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .edu-school {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .edu-year {
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+
+  /* ---- CTA ---- */
+  .cta-section {
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,229,200,0.3);
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #myhero{
+ /* margin-left: 70px; */
+    margin-top: 20px; 
+
+    
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  @media (max-width: 700px) {
+    .about-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+    .hero-chip { display: none; }
+    .edu-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-tag">▸ Open to Work · Data Scientist</p>
+    <h1 class="hero-name">
+      Kowshik<br>Biswas
+      <span>Turning raw data into real decisions</span>
+    </h1>
+    <p class="hero-subtitle">
+      Machine Learning engineer & Data Scientist based in Rangpur, Bangladesh.<br>
+      Specializing in predictive modelling, deep learning pipelines, and data-driven business intelligence.
+    </p>
+  
+    <div class="hero-contacts">
+      <a class="contact-pill" href="mailto:kowshikbiswaskakon@gmail.com">
+        <span class="dot"></span> kowshikbiswaskakon@gmail.com
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/kowshik-biswas-kakon-aaa72133b/" target="_blank">
+        <span class="dot"></span> linkedin.com/in/kowshik-biswas-kakon
+      </a>
+      <a class="contact-pill" href="tel:+8801734927113">
+        <span class="dot"></span> +880 1734-927113
+      </a>
+    </div>
+
+    <div>
+
+      <div id="myhero" class="hero-contacts">
+        <a class="contact-pill" href="https://github.com/KowshikKakon/Job_for_data_Scientist" target="_blank">
+          <span class="dot"></span> Data Science Projects
+        </a>
+        <a class="contact-pill" href="https://github.com/KowshikKakon/Vechile_Ditection_For_Bangladesh" target="_blank">
+          <span class="dot"></span>Deep Learning Projects
+        </a>
+        <a class="contact-pill" href="https://github.com/KowshikKakon/Practice-Job-from-home-Analyst" target="_blank">
+          <span class="dot"></span> Data Analysis projects
+        </a>
+      </div>
+
+
+    </div>
+    <div  id="my_1171" class="hero-chip">
+      <div class="stat">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years in ML/DS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Libraries Mastered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">BD</div>
+        <div class="stat-label">Based in Rangpur</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ABOUT -->
+  <section class="reveal">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        I build <em>intelligent systems</em> that extract patterns from chaos — from raw CSV files to production-grade ML pipelines that power real products.
+      </div>
+      <div class="about-details">
+        <strong>Location</strong><br>Rangpur, Bangladesh<br><br>
+        <strong>Focus Areas</strong><br>Supervised & Unsupervised ML<br>Deep Learning · NLP · Computer Vision<br>Business Intelligence & Dashboards<br><br>
+        <strong>Available For</strong><br>Full-Time · Freelance · Remote
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- SKILLS -->
+  <section class="reveal">
+    <p class="section-label">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <p class="skill-cat-label">Machine Learning</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">XGBoost</span>
+          <span class="skill-tag">Supervised ML</span>
+          <span class="skill-tag">Unsupervised ML</span>
+          <span class="skill-tag">Feature Engineering</span>
+          <span class="skill-tag">Model Evaluation</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <p class="skill-cat-label">Deep Learning</p>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Neural Networks</span>
+          <span class="skill-tag">CNNs</span>
+          <span class="skill-tag">RNNs / LSTMs</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <p class="skill-cat-label">Data & Viz</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">Plotly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EXPERIENCE -->
+  <section class="reveal">
+    <p class="section-label">Experience</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-period">2024 – Present</p>
+        <h3 class="timeline-title">Data Scientist</h3>
+        <p class="timeline-company">Aivra Health LLC · Remote (Applied)</p>
+        <p class="timeline-desc">Applied ML models for healthcare data analysis. Built predictive pipelines using TensorFlow and Scikit-learn, and created interactive dashboards with Power BI and Plotly for clinical stakeholders.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-period">2023 – 2024</p>
+        <h3 class="timeline-title">ML Researcher / Freelancer</h3>
+        <p class="timeline-company">Independent · Rangpur, Bangladesh</p>
+        <p class="timeline-desc">Delivered end-to-end data science projects covering EDA, feature engineering, model training, and reporting for clients across healthcare, e-commerce, and finance sectors.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PROJECTS -->
+  <section class="reveal">
+    <p class="section-label">Projects</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <p class="project-type">Classification</p>
+        <h3 class="project-title">Patient Risk Stratification Model</h3>
+        <p class="project-desc">Built a multi-class XGBoost classifier to stratify patients by health risk level, achieving 91% accuracy on held-out test data.</p>
+        <div class="project-stack">
+          <span class="stack-tag">XGBoost</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">Seaborn</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-type">Deep Learning</p>
+        <h3 class="project-title">Medical Image Classifier</h3>
+        <p class="project-desc">CNN-based image classification pipeline using PyTorch for detecting anomalies in X-ray scans with transfer learning.</p>
+        <div class="project-stack">
+          <span class="stack-tag">PyTorch</span>
+          <span class="stack-tag">CNN</span>
+          <span class="stack-tag">Transfer Learning</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-type">BI Dashboard</p>
+        <h3 class="project-title">Sales Performance Dashboard</h3>
+        <p class="project-desc">Interactive Power BI dashboard integrating multi-source sales data with drill-through views, KPI cards, and trend forecasts.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">Plotly</span>
+          <span class="stack-tag">Pandas</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-type">Clustering · Unsupervised</p>
+        <h3 class="project-title">Customer Segmentation Engine</h3>
+        <p class="project-desc">Applied K-Means and DBSCAN clustering on e-commerce transaction data to identify distinct customer personas for targeted marketing.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">K-Means</span>
+          <span class="stack-tag">DBSCAN</span>
+          <span class="stack-tag">Matplotlib</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EDUCATION -->
+  <section class="reveal">
+    <p class="section-label">Education</p>
+    <div class="edu-card">
+      <div>
+        <p class="edu-degree">Bachelor of Science</p>
+        <p class="edu-school">Computer Science & Engineering · Rangpur, Bangladesh</p>
+      </div>
+      <div class="edu-year">2020 – 2024</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section reveal">
+    <h2 class="cta-title">Let's build something<br>data-driven.</h2>
+    <p class="cta-sub">Open to Data Scientist, ML Engineer, and BI Analyst roles worldwide.</p>
+    <a class="cta-btn" href="mailto:kowshikbiswaskakon@gmail.com">Get In Touch</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Kowshik Biswas</span>
+    <span>Rangpur, Bangladesh · Available Globally</span>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
