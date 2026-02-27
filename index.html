@@ -149,6 +149,22 @@
     animation: fadeIn 1s ease 1s forwards;
   }
 
+  .hero-photo {
+    position: absolute;
+    right: -80px;
+    top: 20%;
+    transform: translate(30%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    opacity: 0;
+    animation: fadeIn 1s ease 0.8s forwards;
+    z-index: -1;
+  }
+
   .hero-chip .stat {
     margin-bottom: 20px;
   }
@@ -525,6 +541,7 @@
   @media (max-width: 700px) {
     .about-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
     .hero-chip { display: none; }
+    .hero-photo { display: none; }
     .edu-card { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
@@ -587,6 +604,7 @@
         <div class="stat-label">Based in Rangpur</div>
       </div>
     </div>
+    <img src="./kowshik2.jpg" alt="Kowshik Biswas portrait" class="hero-photo">
   </section>
 
   <hr class="section-divider">
