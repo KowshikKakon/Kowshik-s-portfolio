@@ -6,7 +6,6 @@
 <title>Kowshik Biswas — Data Scientist</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  
   :root {
     --bg: #0a0a0f;
     --surface: #111118;
@@ -28,7 +27,6 @@
     overflow-x: hidden;
   }
 
-  /* Animated bg grid */
   body::before {
     content: '';
     position: fixed;
@@ -49,7 +47,7 @@
     z-index: 1;
   }
 
-  /* ---- HERO ---- */
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -137,8 +135,8 @@
   /* Floating data chip */
   .hero-chip {
     position: absolute;
-    right: -100px;
-    top: 80%;
+    right: -80px;
+    top: 55%;
     transform: translate(30%, -50%);
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -147,22 +145,6 @@
     width: 200px;
     opacity: 0;
     animation: fadeIn 1s ease 1s forwards;
-  }
-
-  .hero-photo {
-    position: absolute;
-    right: -80px;
-    top: 20%;
-    transform: translate(30%, -50%);
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    opacity: 0;
-    animation: fadeIn 1s ease 0.8s forwards;
-    z-index: -1;
   }
 
   .hero-chip .stat {
@@ -185,7 +167,7 @@
     text-transform: uppercase;
   }
 
-  /* ---- DIVIDER ---- */
+  /* DIVIDER */
   .section-divider {
     border: none;
     height: 1px;
@@ -193,7 +175,7 @@
     margin: 0;
   }
 
-  /* ---- SECTIONS ---- */
+  /* SECTIONS */
   section {
     padding: 80px 0;
   }
@@ -216,7 +198,7 @@
     background: var(--border);
   }
 
-  /* ---- ABOUT ---- */
+  /* ABOUT */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -247,7 +229,7 @@
     font-weight: 500;
   }
 
-  /* ---- SKILLS ---- */
+  /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -289,7 +271,7 @@
     color: var(--text);
   }
 
-  /* ---- EXPERIENCE ---- */
+  /* EXPERIENCE */
   .timeline {
     position: relative;
     padding-left: 32px;
@@ -349,7 +331,7 @@
     line-height: 1.8;
   }
 
-  /* ---- PROJECTS ---- */
+  /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -424,7 +406,7 @@
     font-size: 10px;
   }
 
-  /* ---- EDUCATION ---- */
+  /* EDUCATION */
   .edu-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -458,7 +440,7 @@
     text-align: right;
   }
 
-  /* ---- CTA ---- */
+  /* CTA */
   .cta-section {
     padding: 100px 0;
     text-align: center;
@@ -496,7 +478,7 @@
     box-shadow: 0 12px 40px rgba(0,229,200,0.3);
   }
 
-  /* ---- FOOTER ---- */
+  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 32px 0;
@@ -507,7 +489,7 @@
     color: var(--muted);
   }
 
-  /* ---- ANIMATIONS ---- */
+  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -529,19 +511,10 @@
     opacity: 1;
     transform: translateY(0);
   }
-  #myhero{
- /* margin-left: 70px; */
-    margin-top: 20px; 
-
-    
-  margin-left: auto;
-  margin-right: auto;
-  }
 
   @media (max-width: 700px) {
     .about-grid, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
     .hero-chip { display: none; }
-    .hero-photo { display: none; }
     .edu-card { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
@@ -561,7 +534,6 @@
       Machine Learning engineer & Data Scientist based in Rangpur, Bangladesh.<br>
       Specializing in predictive modelling, deep learning pipelines, and data-driven business intelligence.
     </p>
-  
     <div class="hero-contacts">
       <a class="contact-pill" href="mailto:kowshikbiswaskakon@gmail.com">
         <span class="dot"></span> kowshikbiswaskakon@gmail.com
@@ -572,25 +544,18 @@
       <a class="contact-pill" href="tel:+8801734927113">
         <span class="dot"></span> +880 1734-927113
       </a>
+      <a class="contact-pill" href="https://github.com/KowshikKakon/Job_for_data_Scientist" target="_blank">
+        <span class="dot"></span> Data Science Projects
+      </a>
+      <a class="contact-pill" href="https://github.com/KowshikKakon/Practice-Job-from-home-Analyst" target="_blank">
+        <span class="dot"></span> Data Analytics Projects
+      </a>
+      
+      <a class="contact-pill" href="https://github.com/KowshikKakon/Vechile_Ditection_For_Bangladesh" target="_blank">
+        <span class="dot"></span> Deep Learning Projects
+      </a>
     </div>
-
-    <div>
-
-      <div id="myhero" class="hero-contacts">
-        <a class="contact-pill" href="https://github.com/KowshikKakon/Job_for_data_Scientist" target="_blank">
-          <span class="dot"></span> Data Science Projects
-        </a>
-        <a class="contact-pill" href="https://github.com/KowshikKakon/Vechile_Ditection_For_Bangladesh" target="_blank">
-          <span class="dot"></span>Deep Learning Projects
-        </a>
-        <a class="contact-pill" href="https://github.com/KowshikKakon/Practice-Job-from-home-Analyst" target="_blank">
-          <span class="dot"></span> Data Analysis projects
-        </a>
-      </div>
-
-
-    </div>
-    <div  id="my_1171" class="hero-chip">
+    <div class="hero-chip">
       <div class="stat">
         <div class="stat-num">2+</div>
         <div class="stat-label">Years in ML/DS</div>
@@ -604,7 +569,6 @@
         <div class="stat-label">Based in Rangpur</div>
       </div>
     </div>
-    <img src="./kowshik2.jpg" alt="Kowshik Biswas portrait" class="hero-photo">
   </section>
 
   <hr class="section-divider">
@@ -667,26 +631,7 @@
 
   <hr class="section-divider">
 
-  <!-- EXPERIENCE -->
-  <section class="reveal">
-    <p class="section-label">Experience</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <p class="timeline-period">2024 – Present</p>
-        <h3 class="timeline-title">Data Scientist</h3>
-        <p class="timeline-company">Aivra Health LLC · Remote (Applied)</p>
-        <p class="timeline-desc">Applied ML models for healthcare data analysis. Built predictive pipelines using TensorFlow and Scikit-learn, and created interactive dashboards with Power BI and Plotly for clinical stakeholders.</p>
-      </div>
-      <div class="timeline-item">
-        <p class="timeline-period">2023 – 2024</p>
-        <h3 class="timeline-title">ML Researcher / Freelancer</h3>
-        <p class="timeline-company">Independent · Rangpur, Bangladesh</p>
-        <p class="timeline-desc">Delivered end-to-end data science projects covering EDA, feature engineering, model training, and reporting for clients across healthcare, e-commerce, and finance sectors.</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider">
+  
 
   <!-- PROJECTS -->
   <section class="reveal">
@@ -781,3 +726,5 @@
 
 </body>
 </html>
+
+
