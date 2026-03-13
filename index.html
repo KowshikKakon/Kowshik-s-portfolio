@@ -105,6 +105,15 @@
     animation: fadeUp 0.6s ease 0.65s forwards;
   }
 
+  .hero-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    margin-bottom: 20px;
+  }
+
   .contact-pill {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -517,6 +526,12 @@
     .hero-chip { display: none; }
     .edu-card { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
+  .my_zone {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    margin-left: 800px;
+  }
 </style>
 </head>
 <body>
@@ -525,6 +540,10 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div  class="my_zone">
+      <img  src="./kowshik2.jpg" alt="Kowshik Biswas" class="hero-photo">
+
+    </div>
     <p class="hero-tag">▸ Open to Work · Data Scientist</p>
     <h1 class="hero-name">
       Kowshik<br>Biswas
